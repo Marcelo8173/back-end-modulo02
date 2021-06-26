@@ -1,7 +1,7 @@
 import { ListCategoriesController } from './listCategoriesController'
-import { CategoryRespository } from '../../repositories/CategoryRepository/categoryRespository'
+import { CategoryRespository } from '../../repositories/CategoryRepository/implementacions/categoryRespository'
 
-const categoryRespository = new CategoryRespository()
+const categoryRespository = CategoryRespository.getInstace()
 const listCategoriesController = new ListCategoriesController(categoryRespository)
 
 export { listCategoriesController }

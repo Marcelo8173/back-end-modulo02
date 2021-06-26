@@ -1,11 +1,21 @@
-import { Category } from '../../models/category'
-import { ICategoriesRespository, ICategoryDTO } from './ICategoryRespositorie'
+import { Category } from '../../../models/category'
+import { ICategoriesRespository, ICategoryDTO } from '../ICategoryRespositorie'
 
 class CategoryRespository implements ICategoriesRespository {
   private readonly categories: Category[]
 
-  constructor () {
+  private static INSTACE: CategoryRespository
+
+  private constructor () {
     this.categories = []
+  }
+
+  public static getInstace (): CategoryRespository {
+    if (!CategoryRespository.INSTACE) {
+      CategoryRespository.INSTACE = new CategoryRespository()
+    }
+
+    return CategoryRespository.INSTACE
   }
 
   create ({ name, description }: ICategoryDTO): void {

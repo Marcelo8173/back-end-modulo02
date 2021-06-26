@@ -1,8 +1,8 @@
 import { CreateService } from './CreateCategory'
-import { CategoryRespository } from '../../repositories/CategoryRepository/categoryRespository'
+import { CategoryRespository } from '../../repositories/CategoryRepository/implementacions/categoryRespository'
 import { CreateCategoriesController } from './createCategoriesController'
 
-const categoryRespository = new CategoryRespository()
+const categoryRespository = CategoryRespository.getInstace()
 const createCategory = new CreateService(categoryRespository)
 const createCategoriesController = new CreateCategoriesController(createCategory)
 

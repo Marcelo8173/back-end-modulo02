@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { CategoryRespository } from '../../repositories/CategoryRepository/categoryRespository'
+import { CategoryRespository } from '../../repositories/CategoryRepository/implementacions/categoryRespository'
 
 class ListCategoriesController {
   constructor (private readonly categoryRespository: CategoryRespository) {}

@@ -1,5 +1,5 @@
-import { ISpecificationRepository, ISpecificationRepositoryDTO } from './ISpecificationRepository'
-import { Specification } from '../../models/Specification'
+import { ISpecificationRepository, ISpecificationRepositoryDTO } from '../ISpecificationRepository'
+import { Specification } from '../../../models/Specification'
 
 class SpecificationRepository implements ISpecificationRepository {
   private readonly specificationData: Specification[]
