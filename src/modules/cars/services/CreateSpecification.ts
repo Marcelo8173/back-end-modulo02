@@ -1,4 +1,4 @@
-import { ISpecificationRepositoryDTO, ISpecificationRepository } from '../modules/repositories/SpecificationRepository/ISpecificationRepository'
+import { ISpecificationRepositoryDTO, ISpecificationRepository } from '../repositories/SpecificationRepository/ISpecificationRepository'
 
 class CreateSpecification {
   constructor (private readonly specificationyRespository: ISpecificationRepository) {}

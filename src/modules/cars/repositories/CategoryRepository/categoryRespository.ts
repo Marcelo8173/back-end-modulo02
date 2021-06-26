@@ -18,6 +18,7 @@ class CategoryRespository implements ICategoriesRespository {
     })
 
     this.categories.push(category)
+    console.log('categoriesCreate', this.categories)
   }
 
   list (): Category[] {
