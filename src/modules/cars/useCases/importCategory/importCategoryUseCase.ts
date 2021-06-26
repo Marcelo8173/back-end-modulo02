@@ -25,6 +25,8 @@ class ImportCategoryUseCase {
         })
       })
         .on('end', () => {
+          // eslint-disable-next-line @typescript-eslint/no-floating-promises
+          fileSystem.promises.unlink(file.path)
           resolve(categories)
         })
         .on('error', (err) => {

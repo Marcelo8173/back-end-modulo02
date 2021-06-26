@@ -6,6 +6,7 @@ class ImportCategoryController {
   create (request: Request, response: Response): Response {
     const { file } = request
 
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.importCategoryUseCase.execute(file)
 
     return response.send()
