@@ -6,7 +6,6 @@ class ListCategoriesController {
 
   list (request: Request, response: Response): Response {
     const responseData = this.categoryRespository.list()
-    console.log('responseData', responseData)
     return response.status(200).json(responseData)
   }
 }

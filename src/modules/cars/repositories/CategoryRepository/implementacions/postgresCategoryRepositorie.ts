@@ -3,7 +3,6 @@ import { ICategoriesRespository, ICategoryDTO } from '../ICategoryRespositorie'
 
 class PostgresCategoryRepositorie implements ICategoriesRespository {
   findByName (name: string): Category {
-    console.log(name)
     return null
   }
 
