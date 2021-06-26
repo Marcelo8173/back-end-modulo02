@@ -3,9 +3,18 @@ import { Specification } from '../../../models/Specification'
 
 class SpecificationRepository implements ISpecificationRepository {
   private readonly specificationData: Specification[]
+  private static INSTACE: SpecificationRepository
 
-  constructor () {
+  private constructor () {
     this.specificationData = []
+  }
+
+  public static getInstace (): SpecificationRepository {
+    if (!SpecificationRepository.INSTACE) {
+      SpecificationRepository.INSTACE = new SpecificationRepository()
+    }
+
+    return SpecificationRepository.INSTACE
   }
 
   create ({ name, description }: ISpecificationRepositoryDTO): void {

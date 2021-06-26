@@ -2,8 +2,8 @@ import { SpecificationRepository } from '../../repositories/SpecificationReposit
 import { CreateSpecification } from './CreateSpecification'
 import { CreateSpecificationController } from './createSpecificationController'
 
-const specifiationRepository = new SpecificationRepository()
-const createSpecificationService = new CreateSpecification(specifiationRepository)
+const specificationRepository = SpecificationRepository.getInstace()
+const createSpecificationService = new CreateSpecification(specificationRepository)
 const createSpecificationController = new CreateSpecificationController(createSpecificationService)
 
 export { createSpecificationController }
