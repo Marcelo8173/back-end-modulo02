@@ -1,13 +1,15 @@
+import { getRepository, Repository } from 'typeorm'
 import { Category } from '../../../models/category'
 import { ICategoriesRespository, ICategoryDTO } from '../ICategoryRespositorie'
 
 class CategoryRespository implements ICategoriesRespository {
-  private readonly categories: Category[]
+  // private readonly categories: Category[]
 
   private static INSTACE: CategoryRespository
+  private readonly repository: Repository<Category>
 
   private constructor () {
-    this.categories = []
+    this.repository = getRepository(Category)
   }
 
   public static getInstace (): CategoryRespository {
@@ -18,25 +20,21 @@ class CategoryRespository implements ICategoriesRespository {
     return CategoryRespository.INSTACE
   }
 
-  create ({ name, description }: ICategoryDTO): void {
-    const category = new Category()
-
-    Object.assign(category, {
-      name,
-      description,
-      created_at: new Date()
-    })
-
-    this.categories.push(category)
-    console.log('categoriesCreate', this.categories)
+  async create ({ name, description }: ICategoryDTO): Promise<void> {
+    await this.repository.query(`
+      insert into categories (name,description)
+    values(${name},${description})`)
   }
 
-  list (): Category[] {
-    return this.categories
+  async list (): Promise<Category[]> {
+    const categories = await this.repository.query('select * from categories')
+    return categories
   }
 
-  findByName (name: string): Category {
-    const existCategory = this.categories.find(item => item.name === name)
+  async findByName (name: string): Promise<Category> {
+    const existCategory = this.repository.query(`
+      select * from categories where name = ${name}
+    `)
     return existCategory
   }
 }
